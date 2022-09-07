@@ -4,7 +4,7 @@
   "description": "Schedule for the best group in KPI (^_^)",
   "scripts": {
     "install:all": "npm install && cd frontend && npm install",
-    "start:frontend": "cd frontend && npm start"
+    "start:frontend": "cd frontend && nodemon npm start"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/bochka123/schedule-IO-03#readme",
   "dependencies": {
+    "nodemon": "^2.0.19",
     "react": "^18.2.0"
   }
 }
