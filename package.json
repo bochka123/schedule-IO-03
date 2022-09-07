@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/bochka123/schedule-IO-03/issues"
   },
-  "homepage": "https://github.com/bochka123/schedule-IO-03#readme"
+  "homepage": "https://github.com/bochka123/schedule-IO-03#readme",
+  "dependencies": {
+    "react": "^18.2.0"
+  }
 }
