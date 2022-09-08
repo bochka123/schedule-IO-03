@@ -4,7 +4,7 @@
   "description": "Schedule for the best group in KPI (^_^)",
   "scripts": {
     "install:all": "npm install && cd frontend && npm install",
-    "start:frontend": "cd frontend && nodemon npm start"
+    "start:frontend": "cd frontend && npm start"
   },
   "repository": {
     "type": "git",

@@ -1,3 +1,4 @@
+import {Header} from "./components/header/header";
 function App() {
   return (
     <div className="App">
@@ -13,8 +14,9 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn Reactsas
+          Learn Reactsasaa
         </a>
+        <Header></Header>
       </header>
     </div>
   );
