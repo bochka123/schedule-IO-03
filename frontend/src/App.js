@@ -1,5 +1,6 @@
-import {Header} from "./components/header/header";
+import {Header} from "./components/header/Header";
 import React from "react";
+import "./commonStyles.css";
 
 function App() {
   return (
