@@ -1,10 +1,11 @@
 import React from 'react';
 import {IconsClassNames} from "../../../common/enums";
+import {Icon} from "@iconify/react";
 
-const Icon = ({icon, color}) => {
+const IconifyIcon = ({icon, color}) => {
     return (
-        <i className={IconsClassNames[icon]} style={{color: color}}></i>
+        <Icon icon={IconsClassNames[icon]} color={color}></Icon>
     );
 };
 
-export { Icon };
+export { IconifyIcon };
