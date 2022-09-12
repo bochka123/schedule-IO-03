@@ -3,73 +3,113 @@ export const borders = {
     borderLight: "1px solid #ECECEC"
 }
 
+const colors = {
+    backgroundLight: "#D9D9D9",
+    backgroundDark: "#2E2E2E",
+    fontLight: "#343434",
+    fontDark: "#ECECEC",
+    switcherOutLight: "#C7C7C7",
+    switcherOutDark: "#5C5C5C",
+    switcherInLight: "#828282",
+    switcherInDark: "#D2D2D2",
+    divsLight: "#F1F1F1",
+    divsDark: "#1B1B1B",
+    linkBackLight: "#C7C7C7",
+    linkBackDark: "#5C5C5C",
+    linkTextLight: "#343434",
+    linkTextDark: "#ECECEC",
+}
+
+const fontSizes = {
+    md: "20px"
+}
+
+const spaces = {
+    xs: "2px"
+}
+
+const width = {
+    sm: "35px",
+    lg: "80px"
+}
+
+const height = {
+    sm: "35px",
+    md: "41px"
+}
+
+const radius = {
+    lg: "30px",
+    circle: "50%"
+}
+
 export const themes = {
     light: {
-        backgroundColor: "#D9D9D9",
-        color: "#343434",
+        backgroundColor: colors.backgroundLight,
+        color: colors.fontLight,
         switcherOut: {
             position: "relative",
-            background: "#C7C7C7",
+            background: colors.switcherOutLight,
             border: borders.borderBlack,
-            borderRadius: "30px",
-            width: "80px",
-            height: "41px"
+            borderRadius: radius.lg,
+            width: width.lg,
+            height: height.md
         },
         switcherIn: {
             position: "absolute",
             transition: "all 0.5s ease-in-out",
-            margin: "2px",
-            width: "35px",
-            height: "35px",
-            background: "#828282",
-            borderRadius: "50%",
+            margin: spaces.xs,
+            width: width.sm,
+            height: height.sm,
+            background: colors.switcherInLight,
+            borderRadius: radius.circle,
         },
         div: {
-            backgroundColor: "#F1F1F1",
+            backgroundColor: colors.divsLight,
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            fontSize: "20px",
+            fontSize: fontSizes.md,
             textAlign: "center",
         },
         a:{
             border: borders.borderBlack,
-            backgroundColor: "#C7C7C7",
-            color: "#343434"
+            backgroundColor: colors.linkBackLight,
+            color: colors.linkTextLight
         }
     },
     dark: {
-        backgroundColor: "#2E2E2E",
-        color: "#ECECEC",
+        backgroundColor: colors.backgroundDark,
+        color: colors.fontDark,
         switcherOut: {
             position: "relative",
-            background: "#5C5C5C",
+            background: colors.switcherOutDark,
             border: borders.borderLight,
-            borderRadius: "30px",
-            width: "80px",
-            height: "41px"
+            borderRadius: radius.lg,
+            width: width.lg,
+            height: height.md
         },
         switcherIn: {
             position: "absolute",
             transition: "all 0.5s ease-in-out",
-            margin: "2px",
-            width: "35px",
-            height: "35px",
-            background: "#D2D2D2",
-            borderRadius: "50%",
+            margin: spaces.xs,
+            width: width.sm,
+            height: height.sm,
+            background: colors.switcherInDark,
+            borderRadius: radius.circle,
         },
         div: {
-            backgroundColor: "#1B1B1B",
+            backgroundColor: colors.divsDark,
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            fontSize: "20px",
+            fontSize: fontSizes.md,
             textAlign: "center",
         },
         a:{
             border: borders.borderLight,
-            backgroundColor: "#5C5C5C",
-            color: "#ECECEC"
+            backgroundColor: colors.linkBackDark,
+            color: colors.linkTextDark,
         }
     }
 }
