@@ -5,6 +5,11 @@ main{
     grid-template-columns: 1fr 1fr 4fr 1fr 2fr 1fr;
     background-color: #D9D9D9;
 }
-div{
+.subject{
     background-color: #F1F1F1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    text-align: center;
 }

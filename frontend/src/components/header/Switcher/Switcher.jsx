@@ -7,7 +7,7 @@ const Switcher = () => {
     const [switched, setSwitched] = useState(false);
 
     return (
-        <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+        <div className="wrapper">
             <IconifyIcon icon={Icons.SUN} color='blue'></IconifyIcon>
             <div className="switcher-out">
                 <div className={"switcher-in"} onClick={() => setSwitched(!switched)} switched-data={switched.toString()}></div>
