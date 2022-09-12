@@ -4,6 +4,6 @@ export const Icons = {
 }
 
 export const IconsClassNames = {
-    [Icons.SUN]: 'fa-regular fa-sun',
-    [Icons.MOON]: 'fa-regular fa-moon',
+    [Icons.SUN]: 'akar-icons:sun',
+    [Icons.MOON]: 'bx:moon',
 }
