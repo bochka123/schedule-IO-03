@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import "./Main.css"
+import {ThemeContext} from "../../App";
 
 const Main = () => {
+    const theme = useContext(ThemeContext);
         const headings = [
             "Предмет",
             "Викладачі",
@@ -11,8 +13,8 @@ const Main = () => {
             "Посилання на пару"
         ]
     return (
-        <main>
-                {headings.map(heading => <div className={"subject"}>{heading}</div>)}
+        <main style={theme.theme}>
+                {headings.map((heading, key) => <div style={theme.theme.div} key={key}>{heading}</div>)}
         </main>
     );
 };
