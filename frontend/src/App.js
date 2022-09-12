@@ -1,11 +1,13 @@
 import {Header} from "./components/header/Header";
 import React from "react";
 import "./commonStyles.css";
+import Main from "./components/main/Main";
 
 function App() {
   return (
     <div className="App">
         <Header />
+        <Main />
     </div>
   );
 }
