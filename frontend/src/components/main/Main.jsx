@@ -4,14 +4,14 @@ import {ThemeContext} from "../../App";
 
 const Main = () => {
     const theme = useContext(ThemeContext);
-        const headings = [
-            "Предмет",
-            "Викладачі",
-            "Завдання",
-            "Дедлайн",
-            "Замітки",
-            "Посилання на пару"
-        ]
+    const headings = [
+        "Предмет",
+        "Викладачі",
+        "Завдання",
+        "Дедлайн",
+        "Замітки",
+        "Посилання на пару"
+    ]
     return (
         <main style={theme.theme}>
                 {headings.map((heading, key) => <div style={theme.theme.div} key={key}>{heading}</div>)}

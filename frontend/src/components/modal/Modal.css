@@ -9,6 +9,10 @@
     border-radius: 56px;
     z-index: 1;
 }
+form{
+    display: flex;
+    flex-direction: column;
+}
 input[type=text]{
     background-color: #C7C7C7;
     padding: 10px;
@@ -19,7 +23,7 @@ input[type=text]{
 input[type=text]::placeholder{
     color: #7A7A7A;
 }
-input[type=button]{
+input[type=submit]{
     background-color: #C7C7C7;
     width: 50%;
     margin: 0 auto;
@@ -27,6 +31,7 @@ input[type=button]{
     border: 1px solid #343434;
     border-radius: 40px;
 }
-input[type=button]:hover{
+input[type=submit]:hover{
     background-color: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
