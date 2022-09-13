@@ -8,7 +8,7 @@ const Modal = ({submitHandler}) => {
         <div className="modal">
             <p>Для того, щоб <br/>продовжити, <br/>введіть своє <br/>прізвище</p>
             <form onSubmit={submitHandler}>
-                <input type="text" placeholder="Прізвище" value={value} onChange={event => setValue(event.target.value)}/>
+                <input id="surname" type="text" placeholder="Прізвище" value={value} onChange={event => setValue(event.target.value)}/>
                 <input type="submit" value="Підтвердити"/>
             </form>
         </div>

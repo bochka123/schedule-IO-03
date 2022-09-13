@@ -22,3 +22,14 @@ p{
     color: #343434;
     text-align: center;
 }
+.person{
+    background-color: #C7C7C7;
+    font-size: 32px;
+    color: #343434;
+    border: 1px solid #343434;
+    padding: 10px 20px;
+    border-radius: 30px;
+}
+.person:hover{
+    cursor: pointer;
+}

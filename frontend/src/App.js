@@ -2,7 +2,7 @@ import {Header} from "./components/header/Header";
 import React, {useState} from "react";
 import "./commonStyles.css";
 import Main from "./components/main/Main";
-import { themes } from './theme/theme';
+import {themes} from './theme/theme';
 import Modal from "./components/modal/Modal";
 
 export const ThemeContext = React.createContext(undefined);
@@ -13,22 +13,28 @@ function App() {
         setTheme(theme === 'light' ? 'dark' : 'light');
     }
     const [modal, setModal] = useState(true);
+    const [surname, setSurname] = useState("");
 
-    const submitHandler = (event) => {
+    const submitForm = (event) => {
         event.preventDefault();
         setModal(false);
+        setSurname(document.getElementById("surname").value);
+    }
+
+    const formOn = () => {
+        setModal(true);
     }
 
     const providedValue = {theme: themes[theme], toggleTheme}
 
     return (
         <ThemeContext.Provider value={providedValue}>
-            <Header />
-            <Main />
-            {modal && <Modal submitHandler={submitHandler}/>}
+            <Header formOn={formOn} surname={surname}/>
+            <Main/>
+            {modal && <Modal submitHandler={submitForm}/>}
         </ThemeContext.Provider>
 
-  );
+    );
 }
 
 export default App;
