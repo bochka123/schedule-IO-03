@@ -30,7 +30,7 @@ function App() {
     return (
         <ThemeContext.Provider value={providedValue}>
             <Header formOn={formOn} surname={surname}/>
-            <Main/>
+            <Main modal={modal}/>
             {modal && <Modal submitHandler={submitForm}/>}
         </ThemeContext.Provider>
 
