@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import "./commonStyles.css";
 import Main from "./components/main/Main";
 import {themes} from './theme/theme';
-import Modal from "./components/modal/Modal";
+import Modal from "./components/primitives/modal/Modal";
 
 export const ThemeContext = React.createContext(undefined);
 

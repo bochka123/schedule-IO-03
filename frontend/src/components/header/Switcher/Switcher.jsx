@@ -16,8 +16,8 @@ const Switcher = () => {
     return (
         <div className="wrapper" style={theme.theme}>
             <IconifyIcon icon={Icons.SUN} color='#2E2E2E'></IconifyIcon>
-            <div style={theme.theme.switcherOut} className="switcher-out">
-                <div style={theme.theme.switcherIn} className="switcher-in" onClick={toggleSwitcher} switched-data={switched.toString()} />
+            <div style={theme.theme.switcherOut} className="switcher-out" onClick={toggleSwitcher}>
+                <div style={theme.theme.switcherIn} className="switcher-in"  switched-data={switched.toString()} />
             </div>
             <IconifyIcon icon={Icons.MOON} color='#D9D9D9'></IconifyIcon>
         </div>

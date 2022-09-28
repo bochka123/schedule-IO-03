@@ -76,6 +76,18 @@ export const themes = {
             border: borders.borderBlack,
             backgroundColor: colors.linkBackLight,
             color: colors.linkTextLight
+        },
+        p:{
+            color: colors.fontLight,
+        },
+        modal:{
+            color: colors.fontLight,
+            backgroundColor: colors.backgroundLight
+        },
+        input: {
+            background: colors.linkBackLight,
+            border: `1px solid ${colors.linkTextLight}`,
+            color: colors.fontLight
         }
     },
     dark: {
@@ -110,6 +122,18 @@ export const themes = {
             border: borders.borderLight,
             backgroundColor: colors.linkBackDark,
             color: colors.linkTextDark,
+        },
+        p:{
+            color: colors.fontDark,
+        },
+        modal:{
+            color: colors.fontDark,
+            backgroundColor: colors.backgroundDark,
+        },
+        input: {
+            background: colors.linkBackDark,
+            border: `1px solid ${colors.linkTextDark}`,
+            color: colors.fontDark
         }
     }
 }
