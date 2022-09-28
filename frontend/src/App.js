@@ -4,7 +4,6 @@ import "./commonStyles.css";
 import Main from "./components/main/Main";
 import {themes} from './theme/theme';
 import Modal from "./components/primitives/modal/Modal";
-
 export const ThemeContext = React.createContext(undefined);
 
 function App() {
@@ -18,7 +17,11 @@ function App() {
     const submitForm = (event) => {
         event.preventDefault();
         setModal(false);
-        setSurname(document.getElementById("surname").value);
+        let group = require("./public/group.json")
+        console.log(group);
+        let surname = event.target.surname.value;
+
+        setSurname(surname);
     }
 
     const formOn = () => {
