@@ -18,9 +18,11 @@ const colors = {
     linkBackDark: "#5C5C5C",
     linkTextLight: "#343434",
     linkTextDark: "#ECECEC",
+    error: "red"
 }
 
 const fontSizes = {
+    xs: "1rem",
     md: "20px"
 }
 
@@ -88,6 +90,10 @@ export const themes = {
             background: colors.linkBackLight,
             border: `1px solid ${colors.linkTextLight}`,
             color: colors.fontLight
+        },
+        error: {
+            color: colors.error,
+            fontSize: fontSizes.xs
         }
     },
     dark: {
@@ -134,6 +140,10 @@ export const themes = {
             background: colors.linkBackDark,
             border: `1px solid ${colors.linkTextDark}`,
             color: colors.fontDark
+        },
+        error: {
+            color: colors.error,
+            fontSize: fontSizes.xs
         }
     }
 }

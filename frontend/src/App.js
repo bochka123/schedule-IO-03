@@ -12,16 +12,32 @@ function App() {
         setTheme(theme === 'light' ? 'dark' : 'light');
     }
     const [modal, setModal] = useState(true);
-    const [surname, setSurname] = useState("");
+    const [surname, setSurname] = useState("Прізвище Ім'я");
+    const [error, setError] = useState("");
 
     const submitForm = (event) => {
+        let exists = false; 
         event.preventDefault();
-        setModal(false);
         let group = require("./public/group.json")
-        console.log(group);
+        
         let surname = event.target.surname.value;
 
-        setSurname(surname);
+        group.find(student => { 
+            if(student.surname.toLowerCase() === surname.toLowerCase()){
+                exists = true;
+                surname = `${student.surname} ${student.name}`;
+                return exists;
+            }
+        return exists;
+    });
+        if(exists) {
+            setModal(false);
+            setSurname(surname);
+            setError("");
+        }
+        else {
+            setError("Такого студента немає в нашій сім'ї :)");
+        }
     }
 
     const formOn = () => {
@@ -34,7 +50,7 @@ function App() {
         <ThemeContext.Provider value={providedValue}>
             <Header formOn={formOn} surname={surname}/>
             <Main modal={modal}/>
-            {modal && <Modal submitHandler={submitForm}/>}
+            {modal && <Modal submitHandler={submitForm} error={error}/>}
         </ThemeContext.Provider>
 
     );
