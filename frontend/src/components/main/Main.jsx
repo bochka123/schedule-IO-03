@@ -24,6 +24,7 @@ const Main = ({modal, student}) => {
                 for (const i of chosenSubjects) {
                     if(subj === i.name) chosen.push(i);
                 }
+                return chosen;
             });
             setSubjects(commonSubjects.concat(chosen));
         }
