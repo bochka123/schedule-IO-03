@@ -14,6 +14,7 @@ function App() {
     const [modal, setModal] = useState(true);
     const [surname, setSurname] = useState("Прізвище Ім'я");
     const [error, setError] = useState("");
+    const [currentStudent, setCurrentStudent] = useState(null);
 
     const submitForm = (event) => {
         let exists = false; 
@@ -26,6 +27,13 @@ function App() {
             if(student.surname.toLowerCase() === surname.toLowerCase()){
                 exists = true;
                 surname = `${student.surname} ${student.name}`;
+                const currentStudent = {
+                    name: student.name,
+                    surname: student.surname,
+                    subjects: student.subjects
+                };
+                setCurrentStudent(currentStudent);
+                
                 return exists;
             }
         return exists;
@@ -49,7 +57,7 @@ function App() {
     return (
         <ThemeContext.Provider value={providedValue}>
             <Header formOn={formOn} surname={surname}/>
-            <Main modal={modal}/>
+            <Main modal={modal} student={currentStudent}/>
             {modal && <Modal submitHandler={submitForm} error={error}/>}
         </ThemeContext.Provider>
 
