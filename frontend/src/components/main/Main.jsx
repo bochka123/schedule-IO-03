@@ -1,9 +1,7 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import "./Main.css"
 import {ThemeContext} from "../../App";
 import SubjectRow from "../subjectRow/SubjectRow";
-import { useEffect } from 'react';
-import { useState } from 'react';
 
 const Main = ({modal, student}) => {
     const commonSubjects = require("../../public/common-subjects.json");
