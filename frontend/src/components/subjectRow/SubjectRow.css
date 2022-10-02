@@ -1,23 +1,14 @@
-main{
+section{
     display: grid;
+    grid-template-columns: 1fr 1fr 4fr 1fr 2fr 1fr;
     grid-gap: 10px;
     grid-auto-rows: 125px;
-    grid-template-columns: 1fr;
-    background-color: #D9D9D9;
 }
-.blur{
-    filter: blur(2px);
-}
-.subject{
+section > div{
     background-color: #F1F1F1;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 20px;
     text-align: center;
-}
-.mainList{
-    display: grid;
-    grid-template-columns: 1fr 1fr 4fr 1fr 2fr 1fr;
-    grid-gap: 10px;
 }
