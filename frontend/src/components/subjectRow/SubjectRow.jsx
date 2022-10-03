@@ -10,10 +10,10 @@ const SubjectRow = ( props ) => {
         <section>
             <div style={theme.theme.div}>{props.subject.name}</div>
             <div style={theme.theme.div}>{props.subject.lecturer}</div>
-            <div style={theme.theme.div}></div>
+            <div style={theme.theme.div}>{props.subject.task}</div>
             <div style={theme.theme.div}>{props.subject.deadline}</div>
-            <div style={theme.theme.div}></div>
-            <div style={theme.theme.div}></div>
+            <div style={theme.theme.div}>{props.subject.notes}</div>
+            <div style={theme.theme.div}><a href={props.subject.link}>Посилання</a></div>
         </section>
     );
 };

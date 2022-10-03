@@ -3,30 +3,45 @@
         "id": "1",
         "name": "Паралельне програмування",
         "lecturer": "Кузьмін Ігор Володимирович",
-        "deadline": "2019-12-31"
+        "deadline": "2019-12-31",
+        "task": "(-_-)",
+        "notes": "^_^",
+        "link": "https://google.com"
     },
     {
         "id": "2",
         "name": "Правознавство",
         "lecturer": "Кузьмін Ігор Володимирович",
-        "deadline": "2019-12-31"
+        "deadline": "2019-12-31",
+        "task": "(-_-)",
+        "notes": "^_^",
+        "link": "https://google.com"
     },
     {
         "id": "3",
         "name": "Іноземна мова",
         "lecturer": "Кузьмін Ігор Володимирович",
-        "deadline": "2019-12-31"
+        "deadline": "2019-12-31",
+        "task": "(-_-)",
+        "notes": "^_^",
+        "link": "https://google.com"
     },
     {
         "id": "4",
         "name": "Курсова з СП",
         "lecturer": "Кузьмін Ігор Володимирович",
-        "deadline": "2019-12-31"
+        "deadline": "2019-12-31",
+        "task": "(-_-)",
+        "notes": "^_^",
+        "link": "https://google.com"
     },
     {
         "id": "5",
         "name": "Архітектура комп'ютерів 2",
         "lecturer": "Кузьмін Ігор Володимирович",
-        "deadline": "2019-12-31"
+        "deadline": "2019-12-31",
+        "task": "(-_-)",
+        "notes": "^_^",
+        "link": "https://google.com"
     }
 ]
