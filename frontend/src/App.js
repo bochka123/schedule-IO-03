@@ -7,9 +7,17 @@ import Modal from "./components/primitives/modal/Modal";
 export const ThemeContext = React.createContext(undefined);
 
 function App() {
-    const [theme, setTheme] = useState('light');
+    function checkTheme(){
+        let checkedTheme = "light";
+        if(localStorage.getItem("theme") !== null){
+            checkedTheme = localStorage.getItem("theme");
+        }
+        return checkedTheme;
+    }
+    const [theme, setTheme] = useState(checkTheme());
     const toggleTheme = () => {
         setTheme(theme === 'light' ? 'dark' : 'light');
+        localStorage.setItem("theme", theme === 'light' ? 'dark' : 'light');
     }
     const [modal, setModal] = useState(true);
     const [surname, setSurname] = useState("Прізвище Ім'я");
