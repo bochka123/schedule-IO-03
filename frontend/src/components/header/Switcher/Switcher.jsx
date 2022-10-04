@@ -4,8 +4,8 @@ import {IconifyIcon} from "../../primitives/icon/component";
 import './Switcher.scss';
 import {ThemeContext} from "../../../App";
 
-const Switcher = () => {
-    const [switched, setSwitched] = useState(false);
+const Switcher = ( {switcher} ) => {
+    const [switched, setSwitched] = useState(switcher !== "light");
     const theme = useContext(ThemeContext);
 
     const toggleSwitcher = () => {

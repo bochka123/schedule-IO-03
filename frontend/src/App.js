@@ -64,7 +64,7 @@ function App() {
 
     return (
         <ThemeContext.Provider value={providedValue}>
-            <Header formOn={formOn} surname={surname}/>
+            <Header formOn={formOn} surname={surname} switcher={theme}/>
             <Main modal={modal} student={currentStudent}/>
             {modal && <Modal submitHandler={submitForm} error={error}/>}
         </ThemeContext.Provider>
