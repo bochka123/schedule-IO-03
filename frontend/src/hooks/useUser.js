@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const useUser = (setCurrentStudent, setExists, setSurname) => {
+const useUser = (setCurrentStudent, setExists, setSurname, setModal) => {
 
     useEffect(() => {
         const findUser = (surname) => {
@@ -9,6 +9,7 @@ const useUser = (setCurrentStudent, setExists, setSurname) => {
             group.find(student => { 
                 if(student.surname.toLowerCase() === surname.toLowerCase()){
                     setExists(true);
+                    setModal(false);
                     surname = `${student.surname} ${student.name}`;
                     const currentStudent = {
                         name: student.name,

@@ -21,7 +21,7 @@ function App() {
         setTheme(theme === 'light' ? 'dark' : 'light');
         localStorage.setItem("theme", theme === 'light' ? 'dark' : 'light');
     }
-    const [modal, setModal] = useState(!localStorage.getItem("name"));
+    const [modal, setModal] = useState(true);
     const [surname, setSurname] = useState("Прізвище Ім'я");
     const [error, setError] = useState("");
     const [currentStudent, setCurrentStudent] = useState(localStorage.getItem("name"));
@@ -62,21 +62,18 @@ function App() {
         }
     }, [exists, modal])
     
-    useUser(setCurrentStudent, setExists, setSurname);
+    useUser(setCurrentStudent, setExists, setSurname, setModal);
 
     const formOn = () => {
         setModal(true);
     }
 
     const providedValue = {theme: themes[theme], toggleTheme}
-    
+
     return (
         <ThemeContext.Provider value={providedValue}>
             <Header formOn={formOn} surname={surname} switcher={theme}/>
-            { exists ?
-                <Main modal={modal} student={currentStudent}/>
-                : <></>
-            }
+            <Main modal={modal} student={currentStudent}/>
             {modal && <Modal submitHandler={submitForm} error={error}/>}
         </ThemeContext.Provider>
 
