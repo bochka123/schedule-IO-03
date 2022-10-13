@@ -1,5 +1,5 @@
 import {Header} from "./components/header/Header";
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "./commonStyles.css";
 import Main from "./components/main/Main";
 import {themes} from './theme/theme';
@@ -15,34 +15,28 @@ function App() {
         }
         return checkedTheme;
     }
-    function checkName(){
-        let checkedName = false;
-        if(localStorage.getItem("name") !== null){
-            checkedName = true;
-        }
-        return checkedName;
-    }
+    
     const [theme, setTheme] = useState(checkTheme());
     const toggleTheme = () => {
         setTheme(theme === 'light' ? 'dark' : 'light');
         localStorage.setItem("theme", theme === 'light' ? 'dark' : 'light');
     }
-    const [modal, setModal] = useState(!checkName());
-    const [surname, setSurname] = useState(checkName() ? localStorage.getItem("name") : "Прізвище Ім'я");
+    const [modal, setModal] = useState(!localStorage.getItem("name"));
+    const [surname, setSurname] = useState("Прізвище Ім'я");
     const [error, setError] = useState("");
-    const [currentStudent, setCurrentStudent] = useState(checkName() ? localStorage.getItem("name") : null);
+    const [currentStudent, setCurrentStudent] = useState(localStorage.getItem("name"));
     const [exists, setExists] = useState(false);
 
     const submitForm = (event) => {
-        let exists = false; 
         event.preventDefault();
-        let group = require("./public/group.json")
-        
+        let group = require("./public/group.json");
         let surname = event.target.surname.value;
+        let isError = true;
 
         group.find(student => { 
             if(student.surname.toLowerCase() === surname.toLowerCase()){
-                exists = true;
+                setExists(true);
+                isError = false;
                 surname = `${student.surname} ${student.name}`;
                 const currentStudent = {
                     name: student.name,
@@ -50,34 +44,36 @@ function App() {
                     subjects: student.subjects
                 };
                 setCurrentStudent(currentStudent);
-                
-                return exists;
             }
-        return exists;
     });
-        if(exists) {
+        if(isError){
+            setSurname("Прізвище Ім'я");
+            setError("Такої людини немає в нашій сім'ї :(");
+        } else{
             setModal(false);
-            setSurname(surname);
             setError("");
+        }
+
+        setSurname(surname);
+    }
+    useEffect(() => {
+        if(exists) {
             localStorage.setItem("name", surname.split(' ')[0]);
         }
-        else {
-            setError("Такого студента немає в нашій сім'ї :)");
-        }
-    }
-    useUser(setCurrentStudent, setExists);
+    }, [exists, modal])
+    
+    useUser(setCurrentStudent, setExists, setSurname);
 
     const formOn = () => {
         setModal(true);
     }
 
     const providedValue = {theme: themes[theme], toggleTheme}
-
+    
     return (
         <ThemeContext.Provider value={providedValue}>
             <Header formOn={formOn} surname={surname} switcher={theme}/>
             { exists ?
-                
                 <Main modal={modal} student={currentStudent}/>
                 : <></>
             }

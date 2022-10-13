@@ -4,6 +4,7 @@ import {ThemeContext} from "../../App";
 import SubjectRow from "../subjectRow/SubjectRow";
 
 const Main = ({modal, student}) => {
+    console.log(student);
     const commonSubjects = require("../../public/common-subjects.json");
     const [subjects, setSubjects] = useState(commonSubjects);
     const theme = useContext(ThemeContext);

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const useUser = (setCurrentStudent, setExists) => {
+const useUser = (setCurrentStudent, setExists, setSurname) => {
 
     useEffect(() => {
         const findUser = (surname) => {
@@ -17,10 +17,11 @@ const useUser = (setCurrentStudent, setExists) => {
                     };
                     console.log(currentStudent);
                     setCurrentStudent(currentStudent);
+                    setSurname(`${currentStudent.surname} ${currentStudent.name}`);
                 }
         });
         }
-        console.log(localStorage.getItem('name'));
+        
         if(localStorage.getItem('name') ? findUser(localStorage.getItem('name')) : false);
 
     }, [setCurrentStudent, setExists]);
