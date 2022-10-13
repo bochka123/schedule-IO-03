@@ -1,9 +1,10 @@
 import {Header} from "./components/header/Header";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./commonStyles.css";
 import Main from "./components/main/Main";
 import {themes} from './theme/theme';
 import Modal from "./components/primitives/modal/Modal";
+import { useUser } from "./hooks/useUser";
 export const ThemeContext = React.createContext(undefined);
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
     const [surname, setSurname] = useState(checkName() ? localStorage.getItem("name") : "Прізвище Ім'я");
     const [error, setError] = useState("");
     const [currentStudent, setCurrentStudent] = useState(checkName() ? localStorage.getItem("name") : null);
+    const [exists, setExists] = useState(false);
 
     const submitForm = (event) => {
         let exists = false; 
@@ -57,12 +59,13 @@ function App() {
             setModal(false);
             setSurname(surname);
             setError("");
-            localStorage.setItem("name", surname);
+            localStorage.setItem("name", surname.split(' ')[0]);
         }
         else {
             setError("Такого студента немає в нашій сім'ї :)");
         }
     }
+    useUser(setCurrentStudent, setExists);
 
     const formOn = () => {
         setModal(true);
@@ -73,7 +76,11 @@ function App() {
     return (
         <ThemeContext.Provider value={providedValue}>
             <Header formOn={formOn} surname={surname} switcher={theme}/>
-            <Main modal={modal} student={currentStudent}/>
+            { exists ?
+                
+                <Main modal={modal} student={currentStudent}/>
+                : <></>
+            }
             {modal && <Modal submitHandler={submitForm} error={error}/>}
         </ThemeContext.Provider>
 
