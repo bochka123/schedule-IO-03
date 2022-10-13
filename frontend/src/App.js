@@ -14,15 +14,22 @@ function App() {
         }
         return checkedTheme;
     }
+    function checkName(){
+        let checkedName = false;
+        if(localStorage.getItem("name") !== null){
+            checkedName = true;
+        }
+        return checkedName;
+    }
     const [theme, setTheme] = useState(checkTheme());
     const toggleTheme = () => {
         setTheme(theme === 'light' ? 'dark' : 'light');
         localStorage.setItem("theme", theme === 'light' ? 'dark' : 'light');
     }
-    const [modal, setModal] = useState(true);
-    const [surname, setSurname] = useState("Прізвище Ім'я");
+    const [modal, setModal] = useState(!checkName());
+    const [surname, setSurname] = useState(checkName() ? localStorage.getItem("name") : "Прізвище Ім'я");
     const [error, setError] = useState("");
-    const [currentStudent, setCurrentStudent] = useState(null);
+    const [currentStudent, setCurrentStudent] = useState(checkName() ? localStorage.getItem("name") : null);
 
     const submitForm = (event) => {
         let exists = false; 
@@ -50,6 +57,7 @@ function App() {
             setModal(false);
             setSurname(surname);
             setError("");
+            localStorage.setItem("name", surname);
         }
         else {
             setError("Такого студента немає в нашій сім'ї :)");
