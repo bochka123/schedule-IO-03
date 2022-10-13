@@ -33,9 +33,9 @@ const Main = ({modal, student}) => {
     
     return (
         <main style={theme.theme} className={modal ? "blur" : ""}>
-            <div className="mainList">
+            <>
                 {headings.map((heading, key) => <div style={theme.theme.div} key={key}>{heading}</div>)}
-            </div>
+            </>
             {subjects.map((subject) => <SubjectRow subject={subject}></SubjectRow>)}
         </main>
     );
