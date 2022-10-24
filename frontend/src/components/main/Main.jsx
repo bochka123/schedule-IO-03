@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import "./Main.css"
+import "./Main.scss"
 import {ThemeContext} from "../../App";
 import SubjectRow from "../subjectRow/SubjectRow";
 

@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import "./Modal.css";
+import "./Modal.scss";
 import { ThemeContext } from "../../../App";
 
 const Modal = ({submitHandler, error}) => {

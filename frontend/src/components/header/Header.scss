@@ -33,12 +33,3 @@ p{
 .person:hover{
     cursor: pointer;
 }
-@media all and (max-width: 700px){
-    header{
-        height: 500px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-    }
-}

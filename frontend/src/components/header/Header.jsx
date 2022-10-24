@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import "./Header.css";
+import "./Header.scss";
 import Switcher from "./Switcher/Switcher";
 import {ThemeContext} from "../../App";
 

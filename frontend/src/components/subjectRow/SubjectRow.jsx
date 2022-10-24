@@ -1,7 +1,7 @@
 import React from 'react';
 import {ThemeContext} from "../../App";
 import {useContext} from 'react';
-import "./SubjectRow.css"
+import "./SubjectRow.scss"
 
 const SubjectRow = ( props ) => {
     const theme = useContext(ThemeContext);
@@ -13,7 +13,7 @@ const SubjectRow = ( props ) => {
             <div className="top" style={theme.theme.div}>{props.subject.task}</div>
             <div className="bottom" style={theme.theme.div}>{props.subject.deadline}</div>
             <div className="bottom" style={theme.theme.div}>{props.subject.notes}</div>
-            <div className="bottom" style={theme.theme.div}><a href={props.subject.link}>Посилання</a></div>
+            <div className="bottom" style={theme.theme.div}><a href={props.subject.link} style={theme.theme.a}>Посилання</a></div>
         </>
     );
 };

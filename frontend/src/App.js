@@ -1,6 +1,6 @@
 import {Header} from "./components/header/Header";
 import React, { useEffect, useState } from "react";
-import "./commonStyles.css";
+import "./commonStyles.scss";
 import Main from "./components/main/Main";
 import {themes} from './theme/theme';
 import Modal from "./components/primitives/modal/Modal";
