@@ -3,8 +3,7 @@ import "./Main.scss"
 import {ThemeContext} from "../../App";
 import SubjectRow from "../subjectRow/SubjectRow";
 
-const Main = ({modal, student}) => {
-    console.log(student);
+const Main = ({modal, student, subjFormOn}) => {
     const commonSubjects = require("../../public/common-subjects.json");
     const [subjects, setSubjects] = useState(commonSubjects);
     const theme = useContext(ThemeContext);
@@ -36,7 +35,7 @@ const Main = ({modal, student}) => {
             <>
                 {headings.map((heading, key) => <div style={theme.theme.div} key={key}>{heading}</div>)}
             </>
-            {subjects.map((subject) => <SubjectRow subject={subject}></SubjectRow>)}
+            {subjects.map((subject) => <SubjectRow subject={subject} subjFormOn={subjFormOn}></SubjectRow>)}
         </main>
     );
 };

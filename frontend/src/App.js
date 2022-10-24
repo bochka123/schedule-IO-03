@@ -5,6 +5,7 @@ import Main from "./components/main/Main";
 import {themes} from './theme/theme';
 import Modal from "./components/primitives/modal/Modal";
 import { useUser } from "./hooks/useUser";
+import SubjModal from "./components/subjModal/subjModal";
 export const ThemeContext = React.createContext(undefined);
 
 function App() {
@@ -15,13 +16,14 @@ function App() {
         }
         return checkedTheme;
     }
-    
+
     const [theme, setTheme] = useState(checkTheme());
     const toggleTheme = () => {
         setTheme(theme === 'light' ? 'dark' : 'light');
         localStorage.setItem("theme", theme === 'light' ? 'dark' : 'light');
     }
     const [modal, setModal] = useState(true);
+    const [subjModal, setSubjModal] = useState(true);
     const [surname, setSurname] = useState("Прізвище Ім'я");
     const [error, setError] = useState("");
     const [currentStudent, setCurrentStudent] = useState(localStorage.getItem("name"));
@@ -32,7 +34,7 @@ function App() {
         let group = require("./public/group.json");
         let surname = event.target.surname.value;
         let isError = true;
-        group.find(student => { 
+        group.find(student => {
             if(student.surname.toLowerCase() === surname.toLowerCase()){
                 setExists(true);
                 isError = false;
@@ -60,20 +62,29 @@ function App() {
             localStorage.setItem("name", surname.split(' ')[0]);
         }
     }, [exists, modal])
-    
+
     useUser(setCurrentStudent, setExists, setSurname, setModal);
 
     const formOn = () => {
         setModal(true);
     }
 
+    const submitSubjForm = (event) => {
+        event.preventDefault();
+        setSubjModal(false);
+    }
+    const subjFormOn = () => {
+        console.log(1);
+        setSubjModal(true);
+    }
     const providedValue = {theme: themes[theme], toggleTheme}
 
     return (
         <ThemeContext.Provider value={providedValue}>
             <Header formOn={formOn} surname={surname} switcher={theme}/>
-            <Main modal={modal} student={currentStudent}/>
+            <Main modal={modal} student={currentStudent} subjFormOn={subjFormOn}/>
             {modal && <Modal submitHandler={submitForm} error={error}/>}
+            {!modal && subjModal && <SubjModal submitSubjForm={submitSubjForm}/>}
         </ThemeContext.Provider>
 
     );
