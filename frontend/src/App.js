@@ -32,7 +32,6 @@ function App() {
         let group = require("./public/group.json");
         let surname = event.target.surname.value;
         let isError = true;
-
         group.find(student => { 
             if(student.surname.toLowerCase() === surname.toLowerCase()){
                 setExists(true);
@@ -52,9 +51,9 @@ function App() {
         } else{
             setModal(false);
             setError("");
+            setSurname(surname);
         }
 
-        setSurname(surname);
     }
     useEffect(() => {
         if(exists) {
