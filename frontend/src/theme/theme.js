@@ -94,6 +94,12 @@ export const themes = {
         error: {
             color: colors.error,
             fontSize: fontSizes.xs
+        },
+        rowBorderTop: {
+            borderTop: `3px solid ${colors.fontLight}`,
+        },
+        rowBorderBottom: {
+            borderBottom: `3px solid ${colors.fontLight}`,
         }
     },
     dark: {
@@ -144,6 +150,12 @@ export const themes = {
         error: {
             color: colors.error,
             fontSize: fontSizes.xs
+        },
+        rowBorderTop: {
+            borderTop: `3px solid ${colors.fontDark}`,
+        },
+        rowBorderBottom: {
+            borderBottom: `3px solid ${colors.fontDark}`,
         }
     }
 }
