@@ -73,8 +73,8 @@ function App() {
         event.preventDefault();
         setSubjModal(false);
     }
-    const subjFormOn = () => {
-        console.log(1);
+    const subjFormOn = (event) => {
+        console.log(event);
         setSubjModal(true);
     }
     const providedValue = {theme: themes[theme], toggleTheme}
