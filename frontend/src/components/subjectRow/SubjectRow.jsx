@@ -5,7 +5,7 @@ import "./SubjectRow.scss"
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-const SubjectRow = ( subject, {subjFormOn} ) => {
+const SubjectRow = ( {subject, subjFormOn} ) => {
     const theme = useContext(ThemeContext);
 
     const [topBorderStyle, setTopBorderStyle] = useState('');
@@ -34,12 +34,12 @@ const SubjectRow = ( subject, {subjFormOn} ) => {
 
     return ( 
         <>
-            <div className="top" style={{...theme.theme.div, ...topBorderStyle}}>{subject.subject.name}</div>
-            <div className="top" style={{...theme.theme.div, ...topBorderStyle}}>{subject.subject.lecturer}</div>
-            <div className="top" style={{...theme.theme.div, ...topBorderStyle}} onClick={subjFormOn}>{subject.subject.task}</div>
-            <div className="bottom" style={{...theme.theme.div, ...bottomBorderStyle}} onClick={subjFormOn}>{subject.subject.deadline}</div>
-            <div className="bottom" style={{...theme.theme.div, ...bottomBorderStyle}} onClick={subjFormOn}>{subject.subject.notes}</div>
-            <div className="bottom" style={{...theme.theme.div, ...bottomBorderStyle}}><a href={subject.subject.link} style={theme.theme.a}>Посилання</a></div>
+            <div className="top" style={{...theme.theme.div, ...topBorderStyle}}>{subject.name}</div>
+            <div className="top" style={{...theme.theme.div, ...topBorderStyle}}>{subject.lecturer}</div>
+            <div className="top" style={{...theme.theme.div, ...topBorderStyle}} onClick={subjFormOn}>{subject.task}</div>
+            <div className="bottom" style={{...theme.theme.div, ...bottomBorderStyle}} onClick={subjFormOn}>{subject.deadline}</div>
+            <div className="bottom" style={{...theme.theme.div, ...bottomBorderStyle}} onClick={subjFormOn}>{subject.notes}</div>
+            <div className="bottom" style={{...theme.theme.div, ...bottomBorderStyle}}><a href={subject.link} style={theme.theme.a}>Посилання</a></div>
         </>
     );
 };
