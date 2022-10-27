@@ -1,9 +1,9 @@
 import React, {useContext, useEffect, useState} from 'react';
 import "./Main.scss"
-import {ThemeContext} from "../../App";
+import { ThemeContext } from "../../context";
 import SubjectRow from "../subjectRow/SubjectRow";
 
-const Main = ({modal, student, subjFormOn}) => {
+const Main = ({modal, student}) => {
     const commonSubjects = require("../../public/common-subjects.json");
     const [subjects, setSubjects] = useState(commonSubjects);
     const theme = useContext(ThemeContext);
@@ -36,7 +36,7 @@ const Main = ({modal, student, subjFormOn}) => {
             <>
                 {headings.map((heading, key) => <div style={theme.theme.div} key={key}>{heading}</div>)}
             </>
-            {subjects.map((subject) => <SubjectRow subject={subject} subjFormOn={subjFormOn}></SubjectRow>)}
+            {subjects.map((subject) => <SubjectRow subject={subject}></SubjectRow>)}
         </main>
     );
 };

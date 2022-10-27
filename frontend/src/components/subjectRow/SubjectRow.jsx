@@ -1,12 +1,15 @@
 import React from 'react';
-import { ThemeContext } from "../../App";
+import { ThemeContext, SubjModalContext, SubjectContext, AboutContext } from "../../context";
 import { useContext } from 'react';
 import "./SubjectRow.scss"
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-const SubjectRow = ( {subject, subjFormOn} ) => {
+const SubjectRow = ( {subject} ) => {
     const theme = useContext(ThemeContext);
+    const subjModal = useContext(SubjModalContext);
+    const selectedSubject = useContext(SubjectContext);
+    const about = useContext(AboutContext);
 
     const [topBorderStyle, setTopBorderStyle] = useState('');
     const [bottomBorderStyle, setBottomBorderStyle] = useState('');
@@ -21,6 +24,11 @@ const SubjectRow = ( {subject, subjFormOn} ) => {
         }
     }
 
+    const subjFormOn = (event) => {
+        selectedSubject.setSubject(event.target.getAttribute('subject'));
+        about.setAbout(event.target.getAttribute('about'));
+        subjModal.toggleSubjModal();
+    }
 
     useEffect(() => {
         checkSize();

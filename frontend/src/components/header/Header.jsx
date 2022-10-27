@@ -1,11 +1,16 @@
 import React, { useContext } from 'react';
 import "./Header.scss";
 import Switcher from "./Switcher/Switcher";
-import {ThemeContext} from "../../App";
+import { ThemeContext, ModalContext } from "../../context";
 
-const Header = ({formOn, surname, switcher}) => {
+const Header = ({surname, switcher}) => {
     const theme = useContext(ThemeContext);
-    
+    const modal = useContext(ModalContext);
+
+    const formOn = () => {
+        modal.toggleModal();
+    }
+
     return (
         <header style={theme.theme}>
             <a href="https://schedule.kpi.ua/?groupId=b658eb6c-0f5f-480c-97c9-c9cde76038e3" style={theme.theme.a} className="scheduleLink">Розклад</a>

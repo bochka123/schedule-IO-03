@@ -2,7 +2,7 @@ import React, {useContext, useState} from 'react';
 import {Icons} from "../../../common/enums";
 import {IconifyIcon} from "../../primitives/icon/component";
 import './Switcher.scss';
-import {ThemeContext} from "../../../App";
+import { ThemeContext } from "../../../context";
 
 const Switcher = ( {switcher} ) => {
     const [switched, setSwitched] = useState(switcher !== "light");
