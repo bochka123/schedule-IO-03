@@ -16,6 +16,7 @@ const Main = ({modal, student, subjFormOn}) => {
         "Замітки",
         "Посилання на пару"
     ];
+    
     useEffect(() => {
         if(!modal){
             const chosenSubjects = require("../../public/chosen-subjects.json");

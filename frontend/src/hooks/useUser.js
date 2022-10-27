@@ -25,7 +25,7 @@ const useUser = (setCurrentStudent, setExists, setSurname, setModal) => {
         
         if(localStorage.getItem('name') ? findUser(localStorage.getItem('name')) : false);
 
-    }, [setCurrentStudent, setExists]);
+    }, [setCurrentStudent, setExists, setModal, setSurname]);
 }
 
 export { useUser };

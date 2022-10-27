@@ -5,10 +5,20 @@ import Main from "./components/main/Main";
 import {themes} from './theme/theme';
 import Modal from "./components/primitives/modal/Modal";
 import { useUser } from "./hooks/useUser";
-import SubjModal from "./components/subjModal/subjModal";
+import SubjModal from "./components/primitives/modal/subjModal/subjModal";
 export const ThemeContext = React.createContext(undefined);
 
 function App() {
+    
+    const [modal, setModal] = useState(true);
+    const [subjModal, setSubjModal] = useState(false);
+    const [surname, setSurname] = useState("Прізвище Ім'я");
+    const [error, setError] = useState("");
+    const [currentStudent, setCurrentStudent] = useState(localStorage.getItem("name"));
+    const [exists, setExists] = useState(false);
+    const [about, setAbout] = useState('');
+    const [subject, setSubject] = useState('');
+    
     function checkTheme(){
         let checkedTheme = "light";
         if(localStorage.getItem("theme") !== null){
@@ -22,18 +32,13 @@ function App() {
         setTheme(theme === 'light' ? 'dark' : 'light');
         localStorage.setItem("theme", theme === 'light' ? 'dark' : 'light');
     }
-    const [modal, setModal] = useState(true);
-    const [subjModal, setSubjModal] = useState(true);
-    const [surname, setSurname] = useState("Прізвище Ім'я");
-    const [error, setError] = useState("");
-    const [currentStudent, setCurrentStudent] = useState(localStorage.getItem("name"));
-    const [exists, setExists] = useState(false);
 
     const submitForm = (event) => {
         event.preventDefault();
         let group = require("./public/group.json");
         let surname = event.target.surname.value;
         let isError = true;
+        // eslint-disable-next-line array-callback-return
         group.find(student => {
             if(student.surname.toLowerCase() === surname.toLowerCase()){
                 setExists(true);
@@ -61,6 +66,7 @@ function App() {
         if(exists) {
             localStorage.setItem("name", surname.split(' ')[0]);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [exists, modal])
 
     useUser(setCurrentStudent, setExists, setSurname, setModal);
@@ -71,12 +77,29 @@ function App() {
 
     const submitSubjForm = (event) => {
         event.preventDefault();
+        const data = document.getElementById('data').value;
+        
+        let subjects = require("./public/common-subjects.json");
+
+        let current = subjects.filter(subj => subj.name === subject); 
+        
+        if(!current.length){
+            subjects = require("./public/chosen-subjects.json");
+            current = subjects.filter(subj => subj.name === subject); 
+        }
+
+        current[0][about] = data;
+        
         setSubjModal(false);
     }
+    
     const subjFormOn = (event) => {
-        console.log(event);
+        setSubject(event.target.getAttribute('subject'));
+        setAbout(event.target.getAttribute('about'));
+        
         setSubjModal(true);
     }
+
     const providedValue = {theme: themes[theme], toggleTheme}
 
     return (
