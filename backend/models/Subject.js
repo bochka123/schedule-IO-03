@@ -1,11 +1,6 @@
 import mongoose from "mongoose";
 
-const LessonSchema = new mongoose.Schema({
-    id: {
-        type: String,
-        required: true,
-        unique: true,
-    },
+const SubjectSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -35,4 +30,4 @@ const LessonSchema = new mongoose.Schema({
     timestamps: true,
 });
 
-export default mongoose.model('Lesson', LessonSchema);
+export default mongoose.model('Subject', SubjectSchema);

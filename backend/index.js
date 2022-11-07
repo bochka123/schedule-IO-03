@@ -1,23 +1,27 @@
 import express from "express";
-import LessonModel from './models/Lesson.js';
+import mongoose from "mongoose";
+import SubjectModel from './models/Subject.js';
 
 const app = express();
 const PORT = 3001;
 
+mongoose.connect('mongodb+srv://admin:uXVP5tm!S3ViaNu@cluster0.ufmjis2.mongodb.net/?retryWrites=true&w=majority')
+.then(() => console.log('DB is connected'))
+.catch((err) => console.log(err))
+
 app.get('/', async (req, res) => {
-    // const doc = new LessonModel({
-    //     id: "1",
-    //     name: "Паралельне програмування",
-    //     lecturer: "Корочкін Олександр Володимирович",
-    //     deadline: "2019-12-31",
-    //     task: "(-_-)",
-    //     notes: "^_^",
-    //     link: "https://google.com"
-    // })
+    const doc = new SubjectModel({
+        name: "Паралельне програмування",
+        lecturer: "Корочкін Олександр Володимирович",
+        deadline: "2019-12-31",
+        task: "(-_-)",
+        notes: "^_^",
+        link: "https://google.com"
+    })
 
-    // const lesson = await doc.save();
+    const subject = await doc.save();
 
-    res.send('Hello');
+    res.send(subject);
 })
 
 app.listen(PORT, () => {

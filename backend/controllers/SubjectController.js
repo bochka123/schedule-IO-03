@@ -1,23 +1,23 @@
-import LessonModel from '../models/Lesson.js';
+import SubjectModel from '../models/Subject.js';
 
 export const getAll = async (req, res) => {
     try {
-        const lessons = await LessonModel.find();
-        res.json(lessons);
+        const subjects = await SubjectModel.find();
+        res.json(subjects);
     } catch (err) {
         console.log(err);
         res.status(500).json({
-            message: 'Cannot find lessons('
+            message: 'Cannot find subjects('
         });
     }
 }
 
 export const update = async (req, res) => {
     try {
-        const lessonId = req.params.id;
+        const subjectId = req.params.id;
 
-        await LessonModel.updateOne({
-            id: lessonId,
+        await SubjectModel.updateOne({
+            id: subjectId,
         },
         {
             name: req.body.name,
@@ -34,7 +34,7 @@ export const update = async (req, res) => {
     } catch (err) {
         console.log(err);
         res.status(500).json({
-            message: 'Cannot update lessons('
+            message: 'Cannot update subjects('
         });
     }
 }
