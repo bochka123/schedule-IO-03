@@ -19,11 +19,11 @@
   "bugs": {
     "url": "https://github.com/bochka123/schedule-IO-03/issues"
   },
+  "type": "module",
   "homepage": "https://github.com/bochka123/schedule-IO-03#readme",
   "dependencies": {
+    "express": "^4.18.2",
     "fs": "^0.0.1-security",
-    "mongoose": "^6.7.2",
-    "nodemon": "^2.0.19",
-    "react": "^18.2.0"
+    "mongoose": "^6.7.2"
   }
 }
