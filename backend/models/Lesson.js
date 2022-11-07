@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const LessonSchema = new mongoose.Schema({
     id: {
-        type: Number,
+        type: String,
         required: true,
         unique: true,
     },
