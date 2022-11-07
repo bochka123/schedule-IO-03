@@ -1,9 +1,15 @@
 import mongoose from "mongoose";
 
 const SubjectSchema = new mongoose.Schema({
+    id: {
+        type: String,
+        required: true,
+        unique: true,
+    },
     name: {
         type: String,
         required: true,
+        unique: true,
     },
     lecturer: {
         type: String,

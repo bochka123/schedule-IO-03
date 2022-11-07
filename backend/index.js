@@ -1,6 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
-import SubjectModel from './models/Subject.js';
+import * as SubjectConstroller from './controllers/SubjectController.js';
 
 const app = express();
 const PORT = 3001;
@@ -9,19 +9,14 @@ mongoose.connect('mongodb+srv://admin:uXVP5tm!S3ViaNu@cluster0.ufmjis2.mongodb.n
 .then(() => console.log('DB is connected'))
 .catch((err) => console.log(err))
 
-app.get('/', async (req, res) => {
-    const doc = new SubjectModel({
-        name: "Паралельне програмування",
-        lecturer: "Корочкін Олександр Володимирович",
-        deadline: "2019-12-31",
-        task: "(-_-)",
-        notes: "^_^",
-        link: "https://google.com"
-    })
+app.get('/subject', async (req, res) => {
+    const data = await SubjectConstroller.getAll();
+    res.send(data);
+})
 
-    const subject = await doc.save();
-
-    res.send(subject);
+app.get('/subject/:id', async (req, res) => {
+    const data = await SubjectConstroller.getOne(req, res);
+    res.send(data);
 })
 
 app.listen(PORT, () => {
