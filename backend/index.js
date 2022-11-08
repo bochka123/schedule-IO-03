@@ -12,7 +12,7 @@ mongoose.connect('mongodb+srv://admin:uXVP5tm!S3ViaNu@cluster0.ufmjis2.mongodb.n
 .catch((err) => console.log(err))
 
 app.use(cors());
-var jsonParser = bodyParser.json()
+const jsonParser = bodyParser.json()
 
 app.get('/subjects', async (_req, res) => {
     res.send(await SubjectConstroller.getAll());
