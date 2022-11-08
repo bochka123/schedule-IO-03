@@ -5,9 +5,9 @@ const fetchSubjects = createAsyncThunk(ActionType.GET, async (_args, { extra }) 
     subjects: await extra.subjectsService.getAll(),
 }));
 
-const updateSubject = createAsyncThunk(ActionType.UPDATE, async ({_id, status}, {extra}) => ({
-    subject: await extra.subjectsService.particalUpdate(_id, {
-        status,
+const updateSubject = createAsyncThunk(ActionType.UPDATE, async (params, {extra}) => ({
+    subject: await extra.subjectsService.particalUpdate(params._id, {
+        ...params,
     }),
 }))
 

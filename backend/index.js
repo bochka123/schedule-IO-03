@@ -12,13 +12,19 @@ mongoose.connect('mongodb+srv://admin:uXVP5tm!S3ViaNu@cluster0.ufmjis2.mongodb.n
 .catch((err) => console.log(err))
 
 app.use(cors());
-const jsonParser = bodyParser.json()
+
+app.use(express.json())
+app.use(bodyParser.urlencoded())
+
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 app.get('/subjects', async (_req, res) => {
     res.send(await SubjectConstroller.getAll());
 })
 
-app.patch('/subjects/:id', jsonParser, async (req, res) => {
+app.patch('/subjects/:id', async (req, res) => {
     res.send(await SubjectConstroller.update(req, res));
 })
 

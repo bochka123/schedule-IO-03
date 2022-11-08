@@ -32,7 +32,7 @@ const SubjModal = () => {
         }
         
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [subjModal.subjModal])
+    }, [data])
 
     const submitSubjForm = (event) => {
         event.preventDefault();

@@ -13,9 +13,11 @@ class Subjects {
         });
     }
 
-    particalUpdate(id){
+    particalUpdate(id, payload){
         return this._http.load(this._getUrl(id), {
             method: HttpMethod.PATCH,
+            payload: JSON.stringify(payload),
+            contentType: 'application/json',
         });
     }
 
