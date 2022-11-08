@@ -21,17 +21,16 @@ const SubjModal = () => {
 
     useEffect(() => {
         const currentSubject = subjects.find(item => item.name === subject.subject);
-        
+
         const newData = {
             ...currentSubject,
             [about.about]: data,
         }
         
-        if(data){
+        if(status){
             dispatch(updateSubject(newData))
         }
         
-        console.log(subjModal.subjModal);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [subjModal.subjModal])
 

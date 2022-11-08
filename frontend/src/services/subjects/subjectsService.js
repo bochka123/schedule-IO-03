@@ -20,7 +20,6 @@ class Subjects {
     }
 
     _getUrl(path = '') {
-        console.log(`${this._baseURL}${this._basePath}/${path}`);
         return `${this._baseURL}${this._basePath}/${path}`;
     }
 
