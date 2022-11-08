@@ -16,7 +16,6 @@ const useUser = (setCurrentStudent, setExists, setSurname, setModal) => {
                         surname: student.surname,
                         subjects: student.subjects
                     };
-                    console.log(currentStudent);
                     setCurrentStudent(currentStudent);
                     setSurname(`${currentStudent.surname} ${currentStudent.name}`);
                 }

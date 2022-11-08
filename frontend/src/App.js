@@ -7,9 +7,22 @@ import Modal from "./components/primitives/modal/Modal";
 import { useUser } from "./hooks/useUser";
 import SubjModal from "./components/primitives/modal/subjModal/subjModal";
 import { ThemeContext, ModalContext, SubjModalContext, SubjectContext, AboutContext, ErrorContext } from './context';
+import {useDispatch, useSelector} from "react-redux";
+import { fetchSubjects } from './store/subjects/actions'
 
 function App() {
     
+    const { subjects, status } = useSelector(({ subjects }) => ({
+        subjects: subjects.subjects,
+        status: subjects.status,
+    }));
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchSubjects());
+    }, [])
+
     const [currentStudent, setCurrentStudent] = useState(localStorage.getItem("name"));
     const [exists, setExists] = useState(false);
     const [about, setAbout] = useState('');
