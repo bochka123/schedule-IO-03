@@ -38,7 +38,6 @@ export const getOne = async (req, res) => {
 export const update = async (req, res) => {
     try {
         const subjectId = req.params.id;
-
         await SubjectModel.updateOne({
             _id: subjectId,
         },

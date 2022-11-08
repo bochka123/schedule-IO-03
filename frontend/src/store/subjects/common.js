@@ -1,6 +1,6 @@
 const ActionType = {
     GET: '/get',
-    SET_STATUS: '/set-status',
+    UPDATE: '/update'
 };
 
 export { ActionType };

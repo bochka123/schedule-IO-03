@@ -1,6 +1,5 @@
 const ApiPath = {
-    SUBJECTS: '/subject',
-    SUBJECTS_ID: '/subject/:id'
+    SUBJECTS: '/subjects',
 };
 
 export { ApiPath };

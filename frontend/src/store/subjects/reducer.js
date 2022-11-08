@@ -1,6 +1,6 @@
 import { DataStatus } from '../../common/enums';
 import { createReducer } from '@reduxjs/toolkit';
-import { fetchSubjects } from './actions';
+import { fetchSubjects, updateSubject } from './actions';
 
 const initialState = {
     subjects: [],
@@ -18,6 +18,17 @@ const reducer = createReducer(initialState, (buider) => {
         state.subjects = subjects;
         state.status = DataStatus.SUCCESS;
     });
+
+    buider.addCase(updateSubject.pending, (state) => {
+        state.status = DataStatus.PENDING
+    })
+
+    buider.addCase(updateSubject.fulfilled, (state, { payload }) => {
+        const { subject } = payload;
+        state.subjects = state.subjects.map((item) => {
+            return item.id === subject.id ? {...item, ...subject} : item;
+        });
+    })
 
 });
 

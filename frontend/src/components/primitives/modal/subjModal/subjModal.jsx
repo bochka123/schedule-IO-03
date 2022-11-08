@@ -1,27 +1,43 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ThemeContext, SubjModalContext, SubjectContext, AboutContext } from '../../../../context';
 import './subjModal.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchSubjects, updateSubject } from '../../../../store/subjects/actions';
 
 const SubjModal = () => {
 
+    const [data, setData] = useState();
     const subjModal = useContext(SubjModalContext);
     const theme = useContext(ThemeContext);
     const about = useContext(AboutContext);
     const subject = useContext(SubjectContext);
+    const { subjects, status } = useSelector((state) => state);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchSubjects());
+    }, [dispatch])
+
+    useEffect(() => {
+        const currentSubject = subjects.find(item => item.name === subject.subject);
+        
+        const newData = {
+            ...currentSubject,
+            [about.about]: data,
+        }
+        
+        if(data){
+            dispatch(updateSubject(newData))
+        }
+        
+        console.log(subjModal.subjModal);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [subjModal.subjModal])
 
     const submitSubjForm = (event) => {
         event.preventDefault();
-        const data = document.getElementById('data').value;
-        
-        let subjects = require("../../../../public/common-subjects.json");
-
-        let current = subjects.filter(subj => subj.name === subject.subject); 
-        
-        if(!current.length){
-            subjects = require("../../../../public/common-subjects.json");
-            current = subjects.filter(subj => subj.name === subject.subject); 
-        }     
-        current[0][about.about] = data;     
+        setData(document.getElementById('data').value);   
         subjModal.changeSubjModal(false);
     }
 
