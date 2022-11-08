@@ -47,6 +47,7 @@ const radius = {
 
 export const themes = {
     light: {
+        name: "light",
         backgroundColor: colors.backgroundLight,
         color: colors.fontLight,
         switcherOut: {
@@ -103,6 +104,7 @@ export const themes = {
         }
     },
     dark: {
+        name: "dark",
         backgroundColor: colors.backgroundDark,
         color: colors.fontDark,
         switcherOut: {

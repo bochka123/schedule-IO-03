@@ -7,7 +7,7 @@ import { ThemeContext } from "../../../context";
 const Switcher = ( {switcher} ) => {
     const [switched, setSwitched] = useState(switcher !== "light");
     const theme = useContext(ThemeContext);
-
+    
     const toggleSwitcher = () => {
         setSwitched(!switched);
         theme.toggleTheme();

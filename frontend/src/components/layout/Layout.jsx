@@ -1,11 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { themes } from '../../theme/theme';
 import { ThemeContext, ModalContext, SubjModalContext, SubjectContext, AboutContext, ErrorContext } from '../../context';
 
 function Layout({ children }) {
-    const [exists, setExists] = useState(false);
+    
+    const [theme, setTheme] = useState(checkTheme());
     const [about, setAbout] = useState('');
     const [subject, setSubject] = useState('');
+    const [modal, setModal] = useState(true);
+    const [subjModal, setSubjModal] = useState(false);
+    const [surname, setSurname] = useState("Прізвище Ім'я");
+    const [error, setError] = useState("");
     
     function checkTheme(){
         let checkedTheme = "light";
@@ -15,24 +20,19 @@ function Layout({ children }) {
         return checkedTheme;
     }
 
-    const [theme, setTheme] = useState(checkTheme());
     const toggleTheme = () => {
         setTheme(theme === 'light' ? 'dark' : 'light');
         localStorage.setItem("theme", theme === 'light' ? 'dark' : 'light');
     }
 
-    const [modal, setModal] = useState(true);
     const changeModal = (val) => {
         setModal(val);
     }
 
-    const [subjModal, setSubjModal] = useState(false);
     const changeSubjModal = (val) => {
         setSubjModal(val);
     }
 
-    const [surname, setSurname] = useState("Прізвище Ім'я");
-    const [error, setError] = useState("");
 
     const setEmptyError = () => {
         setError("");
@@ -47,14 +47,6 @@ function Layout({ children }) {
         error: setFullyError,
         noError: setEmptyError
     }
-
-    
-    useEffect(() => {
-        if(exists) {
-            localStorage.setItem("name", surname.split(' ')[0]);
-        }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [exists, modal])
 
     const themeProvidedValue = {theme: themes[theme], toggleTheme};
     const modalProvidedValue = {modal, changeModal};

@@ -21,12 +21,12 @@ function Content() {
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [exists, modal])
-    
+
     useUser(setCurrentStudent, setExists, setSurname, modal.changeModal);
     
     return (
         <>
-            <Header surname={surname} switcher={theme.theme}/>
+            <Header surname={surname} switcher={theme.theme.name}/>
             <Main modal={modal.modal} student={currentStudent}/>
             {modal.modal && <Modal setExists={setExists} setSurname={setSurname} setCurrentStudent={setCurrentStudent}/>}
             {!modal.modal && <SubjModal/>}
