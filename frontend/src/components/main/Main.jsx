@@ -1,13 +1,20 @@
+/* eslint-disable array-callback-return */
 import React, {useContext, useEffect, useState} from 'react';
 import "./Main.scss"
 import { ThemeContext } from "../../context";
 import SubjectRow from "../subjectRow/SubjectRow";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchSubjects } from '../../store/subjects/actions';
+import { DataStatus } from '../../common/enums';
 
 const Main = ({modal, student}) => {
     const commonSubjects = require("../../public/common-subjects.json");
-    const [subjects, setSubjects] = useState(commonSubjects);
+    const [subjectList, setSubjects] = useState(commonSubjects);
     const theme = useContext(ThemeContext);
-    
+    const { subjects, status } = useSelector((state) => state);
+
+    const dispatch = useDispatch();
+
     const headings = [
         "Предмет",
         "Викладачі",
@@ -16,27 +23,36 @@ const Main = ({modal, student}) => {
         "Замітки",
         "Посилання на пару"
     ];
-    
+
     useEffect(() => {
-        if(!modal){
-            const chosenSubjects = require("../../public/chosen-subjects.json");
-            let chosen = [];
-            student.subjects.map((subj) => {
-                for (const i of chosenSubjects) {
-                    if(subj === i.name) chosen.push(i);
+        dispatch(fetchSubjects());
+    }, [dispatch]);
+
+    useEffect(() => {
+        if(!modal && status === DataStatus.SUCCESS){
+            let subjectList = [];
+            subjects.map((subj, key) => {
+                if(key >= 5){
+                    student.subjects.find(item => {
+                        if(item === subj.name) subjectList.push(subj);
+                    });
+                } else {
+                    subjectList.push(subj);
                 }
-                return chosen;
             });
-            setSubjects(commonSubjects.concat(chosen));
+
+            setSubjects(subjectList);
         }
-    }, [commonSubjects, modal, student]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [modal, student, status]);
     
     return (
         <main style={theme.theme} className={modal ? "blur" : ""}>
             <>
                 {headings.map((heading, key) => <div style={theme.theme.div} key={key}>{heading}</div>)}
             </>
-            {subjects.map((subject, key) => <SubjectRow subject={subject} key={key}></SubjectRow>)}
+            {subjectList.map((subject, key) => <SubjectRow subject={subject} key={key}></SubjectRow>)}
         </main>
     );
 };
