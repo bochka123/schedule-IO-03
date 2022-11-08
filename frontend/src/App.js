@@ -12,16 +12,14 @@ import { fetchSubjects } from './store/subjects/actions'
 
 function App() {
     
-    const { subjects, status } = useSelector(({ subjects }) => ({
-        subjects: subjects.subjects,
-        status: subjects.status,
-    }));
+    const { subjects, status } = useSelector((state) => state);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(fetchSubjects());
-    }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const [currentStudent, setCurrentStudent] = useState(localStorage.getItem("name"));
     const [exists, setExists] = useState(false);

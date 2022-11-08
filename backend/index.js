@@ -11,11 +11,13 @@ mongoose.connect('mongodb+srv://admin:uXVP5tm!S3ViaNu@cluster0.ufmjis2.mongodb.n
 
 app.get('/subject', async (req, res) => {
     const data = await SubjectConstroller.getAll();
+    res.set('Access-Control-Allow-Origin', '*');
     res.send(data);
 })
 
 app.get('/subject/:id', async (req, res) => {
     const data = await SubjectConstroller.getOne(req, res);
+    res.set('Access-Control-Allow-Origin', '*');
     res.send(data);
 })
 

@@ -1,26 +1,24 @@
-import { ActionType } from './common';
 import { DataStatus } from '../../common/enums';
+import { createReducer } from '@reduxjs/toolkit';
+import { fetchSubjects } from './actions';
 
 const initialState = {
-    trips: [],
+    subjects: [],
     status: DataStatus.IDLE,
 };
 
-const reducer = (state = initialState, action) => {
-    const { type, payload } = action;
+const reducer = createReducer(initialState, (buider) => {
 
-    switch (type){
-        case ActionType.GET: {
-            const { subjects } = payload;
-            return{
-                ...state,
-                subjects,
-            }
-        }
-        default: {
-            return state;
-        }
-    }
-}
+    buider.addCase(fetchSubjects.pending, (state) => {
+        state.status = DataStatus.PENDING
+    });
+
+    buider.addCase(fetchSubjects.fulfilled, (state, { payload }) => {
+        const { subjects } = payload;
+        state.subjects = subjects;
+        state.status = DataStatus.SUCCESS;
+    });
+
+});
 
 export { reducer };
