@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import * as SubjectConstroller from './controllers/SubjectController.js';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 
 const app = express();
 const PORT = 3001;
@@ -10,26 +11,17 @@ mongoose.connect('mongodb+srv://admin:uXVP5tm!S3ViaNu@cluster0.ufmjis2.mongodb.n
 .then(() => console.log('DB is connected'))
 .catch((err) => console.log(err))
 
-
+app.use(cors());
 var jsonParser = bodyParser.json()
 
-app.get('/subjects', async (req, res) => {
-    const data = await SubjectConstroller.getAll();
-    res.set('Access-Control-Allow-Origin', '*');
-    res.send(data);
-})
-
-app.get('/subjects/:id', async (req, res) => {
-    const data = await SubjectConstroller.getOne(req, res);
-    res.set('Access-Control-Allow-Origin', '*');
-    res.send(data);
+app.get('/subjects', async (_req, res) => {
+    res.send(await SubjectConstroller.getAll());
 })
 
 app.patch('/subjects/:id', jsonParser, async (req, res) => {
-    const data = await SubjectConstroller.update(req, res);
-    res.set('Access-Control-Allow-Origin', '*');
-    res.send(data);
+    res.send(await SubjectConstroller.update(req, res));
 })
+
 
 app.listen(PORT, () => {
     console.log(`Example app listening on port ${PORT}`)

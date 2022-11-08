@@ -13,31 +13,10 @@ export const getAll = async (req, res) => {
     }
 }
 
-export const getOne = async (req, res) => {
-    try {
-        const subjectId = req.params.id;
-
-        return await SubjectModel.findOne({
-            _id: subjectId,
-        }, {
-            name: true,
-            lecturer: true,
-            deadline: true,
-            task: true,
-            notes: true,
-            link: true
-        })
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({
-            message: 'Cannot find subject('
-        });
-    }
-}
-
 export const update = async (req, res) => {
     try {
         const subjectId = req.params.id;
+
         await SubjectModel.updateOne({
             _id: subjectId,
         },

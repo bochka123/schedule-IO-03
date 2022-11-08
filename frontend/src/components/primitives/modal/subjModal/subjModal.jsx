@@ -11,7 +11,7 @@ const SubjModal = () => {
     const theme = useContext(ThemeContext);
     const about = useContext(AboutContext);
     const subject = useContext(SubjectContext);
-    const { subjects, status } = useSelector((state) => state);
+    const { subjects } = useSelector((state) => state);
 
     const dispatch = useDispatch();
 
@@ -27,7 +27,7 @@ const SubjModal = () => {
             [about.about]: data,
         }
         
-        if(status){
+        if(data){
             dispatch(updateSubject(newData))
         }
         

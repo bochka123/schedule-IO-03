@@ -20,14 +20,17 @@ const reducer = createReducer(initialState, (buider) => {
     });
 
     buider.addCase(updateSubject.pending, (state) => {
-        state.status = DataStatus.PENDING
+        state.status = DataStatus.PENDING;
     })
 
-    buider.addCase(updateSubject.fulfilled, (state, { payload }) => {
-        const { subject } = payload;
+    buider.addCase(updateSubject.fulfilled, (state, { meta }) => {
+        const { arg } = meta;
+
         state.subjects = state.subjects.map((item) => {
-            return item.id === subject.id ? {...item, ...subject} : item;
+            return item._id === arg._id ? {...item, ...arg} : item;
         });
+
+        state.status = DataStatus.SUCCESS;
     })
 
 });
