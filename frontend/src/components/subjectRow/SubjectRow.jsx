@@ -27,7 +27,7 @@ const SubjectRow = ( {subject} ) => {
     const subjFormOn = (event) => {
         selectedSubject.setSubject(event.target.getAttribute('subject'));
         about.setAbout(event.target.getAttribute('about'));
-        subjModal.toggleSubjModal();
+        subjModal.changeSubjModal(true);
     }
 
     useEffect(() => {

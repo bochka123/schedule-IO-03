@@ -32,7 +32,7 @@ const Modal = ({setExists, setSurname, setCurrentStudent}) => {
         if(isError){
             error.toggleError.error();
         } else{
-            modal.toggleModal();
+            modal.changeModal(false);
             error.toggleError.noError();
         }
 

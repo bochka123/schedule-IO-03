@@ -22,7 +22,7 @@ const SubjModal = () => {
             current = subjects.filter(subj => subj.name === subject.subject); 
         }     
         current[0][about.about] = data;     
-        subjModal.toggleSubjModal();
+        subjModal.changeSubjModal(false);
     }
 
     return (

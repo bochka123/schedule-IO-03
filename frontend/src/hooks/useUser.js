@@ -18,13 +18,18 @@ const useUser = (setCurrentStudent, setExists, setSurname, setModal) => {
                     };
                     setCurrentStudent(currentStudent);
                     setSurname(`${currentStudent.surname} ${currentStudent.name}`);
+
+                    return currentStudent;
                 }
+
+                return false;
         });
         }
         
         if(localStorage.getItem('name') ? findUser(localStorage.getItem('name')) : false);
 
-    }, [setCurrentStudent, setExists, setModal, setSurname]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 }
 
 export { useUser };

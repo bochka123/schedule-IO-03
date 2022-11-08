@@ -36,7 +36,7 @@ const Main = ({modal, student}) => {
             <>
                 {headings.map((heading, key) => <div style={theme.theme.div} key={key}>{heading}</div>)}
             </>
-            {subjects.map((subject) => <SubjectRow subject={subject}></SubjectRow>)}
+            {subjects.map((subject, key) => <SubjectRow subject={subject} key={key}></SubjectRow>)}
         </main>
     );
 };

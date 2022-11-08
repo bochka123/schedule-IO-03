@@ -6,9 +6,10 @@ import { ThemeContext, ModalContext } from "../../context";
 const Header = ({surname, switcher}) => {
     const theme = useContext(ThemeContext);
     const modal = useContext(ModalContext);
-
+    
     const formOn = () => {
-        modal.toggleModal();
+        modal.changeModal(true);
+        localStorage.removeItem('name');
     }
 
     return (
