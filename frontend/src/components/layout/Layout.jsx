@@ -9,7 +9,7 @@ function Layout({ children }) {
     const [subject, setSubject] = useState('');
     const [modal, setModal] = useState(true);
     const [subjModal, setSubjModal] = useState(false);
-    const [surname, setSurname] = useState("Прізвище Ім'я");
+    const [_, setSurname] = useState("Прізвище Ім'я");
     const [error, setError] = useState("");
     
     function checkTheme(){
