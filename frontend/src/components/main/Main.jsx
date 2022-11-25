@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchSubjects } from '../../store/subjects/actions';
 import { DataStatus } from '../../common/enums';
 
-const Main = ({modal, student}) => {
+const Main = ({modal, subjModal, student}) => {
     const commonSubjects = require("../../public/common-subjects.json");
     const [subjectList, setSubjects] = useState(commonSubjects);
     const theme = useContext(ThemeContext);
@@ -48,7 +48,7 @@ const Main = ({modal, student}) => {
     }, [modal, student, status]);
     
     return (
-        <main style={theme.theme} className={modal ? "blur" : ""}>
+        <main style={theme.theme} className={modal || subjModal ? "blur" : ""}>
             <>
                 {headings.map((heading, key) => <div style={theme.theme.div} key={key}>{heading}</div>)}
             </>

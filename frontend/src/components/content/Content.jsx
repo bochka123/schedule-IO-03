@@ -3,11 +3,12 @@ import Main from "../../components/main/Main";
 import Modal from "../../components/primitives/modal/Modal";
 import { useUser } from "../../hooks/useUser";
 import SubjModal from "../../components/primitives/modal/subjModal/subjModal";
-import { ModalContext, ThemeContext } from '../../context';
+import { ModalContext, ThemeContext, SubjModalContext } from '../../context';
 import { Header } from '../header/Header';
 
 function Content() {
     const modal = useContext(ModalContext);
+    const subjModal = useContext(SubjModalContext);
     const theme = useContext(ThemeContext);
 
     const [currentStudent, setCurrentStudent] = useState(localStorage.getItem("name"));
@@ -27,7 +28,7 @@ function Content() {
     return (
         <>
             <Header surname={surname} switcher={theme.theme.name}/>
-            <Main modal={modal.modal} student={currentStudent}/>
+            <Main modal={modal.modal} subjModal={subjModal.subjModal} student={currentStudent}/>
             {modal.modal && <Modal setExists={setExists} setSurname={setSurname} setCurrentStudent={setCurrentStudent}/>}
             {!modal.modal && <SubjModal/>}
         </>
